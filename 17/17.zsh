@@ -26,12 +26,12 @@ fi
 
 # hundreds
 if (( x/100%10 )); then
-  number="${ones[$(( x/100%10 ))]}$magnitude[100]${number:+$and$number}"
+  number="${ones[ x/100%10 ]}$magnitude[100]${number:+$and$number}"
 fi
 
 # thousands
 if (( x/1000%10 )); then
-  number="${ones[x/1000%10]}$magnitude[1000]$number"
+  number="${ones[ x/1000%10 ]}$magnitude[1000]$number"
 fi
 
 fi
