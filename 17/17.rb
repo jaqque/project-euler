@@ -29,7 +29,7 @@ total=0
   end
 
   total += british.length
-  puts british
+  # puts british
 
 end
 
