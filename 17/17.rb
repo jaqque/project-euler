@@ -1,49 +1,36 @@
 #!/usr/bin/env ruby
 
-words = ["one thousand", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"]  # index is dead on # except for 0, which is 1,000 -jaqque
-tens = ["ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"] # index is -1
+ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+teens = ["ten", "eleven", "twelve", "thirteen", "fourteen",
+  "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" ]
+tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
 
-total = 0
-words.each {|word| total += word.gsub(/\s+/, '').length}
 
-puts total
+total=0
 
-index = (words.length - 1)
-zed = []
-(21..999).to_a.each do |num|
-  puts words.to_s
-  if (num % 100).zero?
-    hundred = words[num / 100]
+(1..1000).each do |x|
 
-    words.push("#{hundred} hundred")
-    index += 1
-
-    total += words[index].gsub(/\s+/, '').length
-  elsif (num % 10).zero?
-    if num > 100
-      num_string = num.to_s.split('')
-      hundred = words[num_string[0].to_i]
-      ten = tens[(num_string[1].to_i - 1)]
-
-      words.push("#{hundred} hundred and #{ten}")
-      index += 1
-
-      total += words[index].gsub(/\s+/, '').length
-    else
-      ten = (num / 10) - 1
-
-      words.push(tens[ten])
-      index += 1
-      total += words[index].length
-    end
+  british=''
+  if ( x%100 < 10)
+    british=ones[ x%100 ]
+  elsif ( x%100 < 20 )
+    british=teens[ x%100-10 ]
   else
-    #IF it's not a 10 / 100, then I have to create it
-    word = [words[index], words[num.to_s.split('')[-1].to_i]] #because the hyphen doesn't count
-
-    # zed.push(word)
-
-    word.each {|wo| total += wo.gsub(/\s+/, '').length}
+    british=tens[ x%100/10] + ones[ x%10]
   end
+
+  if ( x/100%10 > 0 )
+    british=ones[ x/100%10 ] + "hundred" + (british.empty? ? "" : "and" + british)
+  end
+
+  # thousands
+  if ( x/1000%10 > 0 )
+    british=ones[ x/1000%10 ] + "thousand" + british
+  end
+
+  total += british.length
+  puts british
+
 end
 
 puts total
