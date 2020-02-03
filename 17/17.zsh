@@ -14,17 +14,14 @@ number=''
 
 if (( x == 0 )); then number="$zero"; else
 
-# 1-99
-if ! (( x%100 == 0)); then
-  if (( x%100 < 20)); then
-    if (( x%100 < 10 )); then
-      number="$ones[$(( x%100 ))]"
-    else
-      number="$teens[$(( x%100-9 ))]"
-    fi
-  else
-    number="$tens[$(( x%100/10 ))]$ones[$(( x%10 ))]"
-  fi
+# 0-99
+
+if (( x%100 < 10)); then
+  number="$ones[$(( x%100 ))]"
+elif (( x%100 < 20 )); then
+  number="$teens[$(( x%100-9 ))]"
+else
+  number="$tens[$(( x%100/10 ))]$ones[$(( x%10 ))]"
 fi
 
 # hundreds
