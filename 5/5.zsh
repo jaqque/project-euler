@@ -1,5 +1,10 @@
 #!/usr/bin/env zsh
 
+status() {
+  printf "\e[GI am on: %'d\n" $x
+}
+trap status INT
+
 x=0
 continue=true
 
@@ -12,13 +17,7 @@ while [[ $continue = "true" ]]; do
       break
     fi
   done
-  if   ! (( x%100000 )); then echo "\n$(( x/100000 ))"
-  elif ! (( x%10000  )); then echo    '#'
-  elif ! (( x%1000   )); then echo -n '*'
-  elif ! (( x%100    )); then echo -n '+'
-  elif ! (( x%10     )); then echo -n '.'
-  fi
 done
 
 echo
-echo "ya boi $x"
+printf "%'d\n" $x
