@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-max=2000000
+max=1_000_000_000
 sqrt_of_max=Math.sqrt(max).to_i
 sum=0
 number_of_primes=0
@@ -12,7 +12,7 @@ sieve[2]=true
 
 (1..sqrt_of_max).each do |candidate|;
   next if(sieve[candidate]==false); # crossed out? skip it
-  (2*candidate..max).step(candidate).each do |stepper|
+  (candidate*candidate..max).step(candidate).each do |stepper|
     sieve[stepper]=false # cross out multiples of the candidiate
   end
 end
