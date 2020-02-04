@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 
-primes=(2 3) #start small; 3/2=1, causing a count down in line 7. oops.
+primes=(2) #start small
 
 integer sqrt
-for i in {4..2000000}; do
+for i in {3..2000000}; do
   is_prime=true
   sqrt=$(( i**.5 ))
   for j in {1..$#primes}; do
