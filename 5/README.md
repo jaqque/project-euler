@@ -9,3 +9,7 @@ This is a bad algorithm. Start at one, test if it's the LCM. Increment until fou
 - zsh: 1:07:09.15 total
 - ruby: 47.737 total
 - rust: 26.300 total
+
+Better algorithm
+
+- zsh: 0.012 total
