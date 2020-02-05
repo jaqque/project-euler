@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 primes=(2) #start small
+sum=2
 
 integer sqrt
 for i in {3..2000000}; do
