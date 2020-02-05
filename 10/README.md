@@ -4,7 +4,7 @@
 Sum of primes.
 
 - rust: 2.875 total
-- zsh:
+- zsh: 8:19:04.05 total
 
 Using a sieve:
 
